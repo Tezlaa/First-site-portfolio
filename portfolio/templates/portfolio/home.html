@@ -2,55 +2,101 @@
 <html lang="en">
 
 <head>
-  <title>Portfolio</title>
-  <!-- Required meta tags -->
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    {% load static %}
+    <title>Portfolio</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-  <!-- Bootstrap CSS v5.2.0-beta1 -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
+    <!-- Bootstrap CSS v5.2.0-beta1 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
     integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
 
-    {% load static %}
+
+    <link rel="icon" type='image/png' href="{% static "portfolio/logo.png" %}">
+    
 
 </head>
-    <body>
-        <!--NAVBAR-->
-        {% include 'portfolio/navbar.html' %}
-        <header style='text-align:center'>
- 
-            <!--TITLE PAGE-->
-            <h1>Bogdan's portfolio</h1>
-        </header>
-        <main>
-            <div style='text-align:'>
-        
+    <div class="container">
+        <body class="d-flex flex-column min-vh-100">
+
+            <!--NAVBAR-->
+            {% include 'portfolio/navbar.html' %}
+            <header style='text-align:center'>
+    
+                <!--TITLE PAGE-->
+                <h1>Bogdan's portfolio</h1>
                 <br>
+                <br>
+            </header>
+            <main>
                 <div style='text-align:center'>
-                    <a href=" {% url 'blog:all_blogs' %} ">Blog</a>
+                    <!--function check main information on the page-->
+                    <img class="shadow p-0 mb-5 bg-body rounded" src="{% static 'portfolio/Арт 2.png' %}" width ="350" class="rounded-5" >
+                    <br>
+                    <br>
+                    <h1 class="display-4">Hello , i`m beginning developer on python. You can see my mini projects in python and django below:</h1>
                 </div>
                 <br>
-                <!--function check main information on the page-->
-                <img src="{% static 'portfolio/Арт 2.png' %}">
-        
-                {% for project in projects %}
-        
-                <h3>{{ project.title }}</h3>
-        
-                <p>{{ project.description }}</p>
-        
-                <img src="{{ project.imege.url }}">
-        
-                {% if project.url %}
-                <br><a href="{{ project.url }}" target="_blank">link</a>
-                {% endif %}
-                        
-                {% endfor %}
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <h2>Portfolio</h2>
+                <hr>
+                <div class="row">
+                    {% for project in projects %}
+                    <div class="col-lg-3 col-md-6">
+                  
+                        {% if project.url %}
+                        <a href="{{ project.url }}">
+                        <img src="{{ project.imege.url }}" class="img-fluid mb-2">
+                        </a>
+                        {% else %}
+                  
+                        <img src="{{ project.imege.url }}" class="img-fluid mb-2">
+                        {% endif %}
+                        <h3>{{ project.title }}</h3>
+                        <p>{{ project.description }}</p>
+                        <a href="{{ project.url }}" class="btn btn-outline-primary">Go to github</a>
+    
+                    </div>
+                    {% endfor %}
+                </div>
+
+            </main> 
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <footer>
+            <!-- Footer -->  
+            <div class="p-2 mb-0 bg-light text-dark">
+                <div class='container'>
+                    <div class='d-flex flex-row-reverse bd-highlight'>
+                        <div class="p-2 bd-highlight">
+                            <a href="https://t.me/TTezla" target='_blank'>
+                                <img src="{% static "portfolio/telegram.png" %}" class="img-fluid mb-2" width ="48">
+                            </a>
+                        </div>
+                        <div class="p-2 bd-highlight">
+                            <a href="https://www.facebook.com/bogdan.tishenko.9" target='_blank' >
+                            <img src="{% static "portfolio/facebook.png" %}" class="img-fluid mb-2" width ="45">
+                            </a>
+                        </div>
+                        <div class="p-2 bd-highlight">
+                            <a href="https://www.instagram.com/" target='_blank'>
+                                <img src="{% static "portfolio/instagram.png" %}" class="img-fluid mb-2" width ="42">
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </main> 
-        <footer style='text-align:right'>
-        <!-- place footer here -->
-            <a href="https://www.instagram.com/tezla_xix/">my instagram</a>
         </footer>
-    </body>
+        </body>
+    </div>
 </html>
+

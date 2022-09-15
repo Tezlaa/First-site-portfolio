@@ -13,32 +13,42 @@
 
     {% load static %}
 
+    <link rel="icon" type='image/png' href="{% static "portfolio/logo.png" %}">
+
 </head>
-    <body>
-        <!--NAVBAR-->
-        {% include 'portfolio/navbar.html' %}
-        <header style='text-align:center'>
- 
-            <!--TITLE PAGE-->
-            <h1>Blogs</h1>
-        </header>
-        <main>
-            <div style='text-align:'>
-        
-                <h1>Tezla has writing {{ my_blog.count }} blog{{ my_blog.count|pluralize }} </h1>
+    <div class="container">
+        <body>
+            <!--NAVBAR-->
+            {% include 'portfolio/navbar.html' %}
+            <header style='text-align:center'>
+    
+                <!--TITLE PAGE-->
+                <h1>Blogs</h1>
+            </header>
+            <br>
+            <br>
+            <main>
+                <div style='text-align:'>
+            
+                    <h1>Tezla has writing {{ my_blog.count }} blog{{ my_blog.count|pluralize }} </h1>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    {% for blog in my_blog %}
 
-                {% for blog in my_blog %}
+                    <a href='{% url 'blog:detail' blog.id %}'><h3>{{ blog.title }}</h3></a>
+                    <p>{{ blog.date|date:'M d Y'|upper }}</p>
+                    <h5>{{ blog.description|truncatechars:50 }}</h5>
 
-                <a href='{% url 'blog:detail' blog.id %}'><h3>{{ blog.title }}</h3></a>
-                <p>{{ blog.date|date:'M d Y'|upper }}</p>
-                <h5>{{ blog.description|truncatechars:50 }}</h5>
+                    {% endfor %}
+                </div>
+            </main> 
 
-                {% endfor %}
-            </div>
-        </main> 
-        <footer style='text-align:right'>
-        <!-- place footer here -->
-            <a href="https://www.instagram.com/tezla_xix/">my instagram</a>
-        </footer>
-    </body>
+            <footer>
+                <!-- Footer -->  
+                
+            </footer>
+        </body>
+    </div>
 </html>

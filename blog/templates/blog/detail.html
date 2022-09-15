@@ -13,30 +13,54 @@
 
     {% load static %}
 
+
+    <link rel="icon" type='image/png' href="{% static "portfolio/logo.png" %}">
 </head>
-    <body>
-        <!--NAVBAR-->
-        {% include 'portfolio/navbar.html' %}
-        <header>
- 
-            <!--TITLE PAGE-->
-            
-        </header>
-        <main>
-            <div style='text-align:center'>
-                <div style="text-align:center">
-                    <em><h1 style="text-align:center">{{ blog.title }}</h1></em>
-                    <em>---{{ blog.date|date:"F jS Y" }}---</em>
+    <div class="container">
+        <body class="d-flex flex-column min-vh-100">
+            <!--NAVBAR-->
+            {% include 'portfolio/navbar.html' %}
+            <header>
+    
+                <!--TITLE PAGE-->
+                
+            </header>
+            <main>
+                <div style='text-align:center'>
+                    <div style="text-align:center">
+                        <em><h1 style="text-align:center">{{ blog.title }}</h1></em>
+                        <em>---{{ blog.date|date:"F jS Y" }}---</em>
+                    </div>
+                    <br>
+                    <div style="text-align:center">
+                        <p>{{ blog.description|safe }}</p>
+                    </div>
                 </div>
-                <br>
-                <div style="text-align:center">
-                    <p>{{ blog.description|safe }}</p>
+            </main> 
+            <footer>
+                <!-- Footer -->  
+                <div class="p-2 mb-0 bg-light text-dark">
+                    <div class='container'>
+                        <div class='d-flex flex-row-reverse bd-highlight'>
+                            <div class="p-2 bd-highlight">
+                                <a href="https://t.me/TTezla" target='_blank'>
+                                    <img src="{% static "portfolio/telegram.png" %}" class="img-fluid mb-2" width ="48">
+                                </a>
+                            </div>
+                            <div class="p-2 bd-highlight">
+                                <a href="https://www.facebook.com/bogdan.tishenko.9" target='_blank' >
+                                <img src="{% static "portfolio/facebook.png" %}" class="img-fluid mb-2" width ="45">
+                                </a>
+                            </div>
+                            <div class="p-2 bd-highlight">
+                                <a href="https://www.instagram.com/" target='_blank'>
+                                    <img src="{% static "portfolio/instagram.png" %}" class="img-fluid mb-2" width ="42">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </main> 
-        <footer style='text-align:right'>
-        <!-- place footer here -->
-            <a href="https://www.instagram.com/tezla_xix/">my instagram</a>
-        </footer>
-    </body>
+            </footer>
+        </body>
+    </div>
 </html>
